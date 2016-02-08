@@ -20,7 +20,10 @@ class PhoneNumberFilterService {
 		def json = request.JSON
 		if (json.isEmpty()) {
 			def text = params.find { true }.key 
-			json = new JsonSlurper().parseText(text)
+			// For GET JSON 
+			try { json = new JsonSlurper().parseText(text) }
+			// For GET TEXT
+			catch (Exception e) { json = text }
 		}
 
 		// Iterate through the JSON applying the boundary filter
@@ -63,6 +66,13 @@ class PhoneNumberFilterService {
 
 		
 			return [failed: failed, passed: passed]
+		}
+		else {
+			if (checkForPhoneNumbers(json)) { failed.push(json) }
+			else { passed.push(json) }
+
+
+			return [passed: passed, failed: failed]
 		}
 	}
 }
