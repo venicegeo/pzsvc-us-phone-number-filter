@@ -1,0 +1,9 @@
+applications:
+  - name: pzsvc-us-phone-number-filter
+    host: pzsvc-us-phone-number-filter
+    path: pzsvc-us-phone-number-filter.jar
+    memory: 1G
+    instances: 1
+    timeout: 180
+    env:
+      JBP_CONFIG_JAVA_MAIN: '{arguments: "host=\$HOSTNAME port=\$PORT"}'
