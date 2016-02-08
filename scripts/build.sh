@@ -8,7 +8,7 @@ popd > /dev/null
 # gather some data about the repo
 source $base/vars.sh
 
-cd us-geospatial-filter
+cd us-phone-number-filter
 grails compile
 grails -Dbuild.compiler=javac1.7 build-standalone $ARTIFACT
 aws s3 cp $ARTIFACT s3://$S3BUCKET/$APP/$ARTIFACT
