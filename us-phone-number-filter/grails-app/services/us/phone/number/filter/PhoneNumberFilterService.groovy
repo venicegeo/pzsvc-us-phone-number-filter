@@ -8,20 +8,11 @@ class PhoneNumberFilterService {
 
 
 	def checkForPhoneNumbers(object) {
-		def text = object.toString()
+		def pattern = /([^0-9]+[(]?[2-9]\d{2}[)]?|^[(]?[2-9]\d{2}[)]?)(\s|-|[.])[2-9]\d{2}(\s|-|[.])(\d{4}[^0-9]+|\d{4}$)/
 
-		def patterns = [
-			/1(\s|-|[.])[(][2-9]\d{2}[)](\s|-|[.])[2-9]\d{2}(\s|-|[.])(\d{4}[^0-9]+|\d{4}$)/,
-			/1(\s|-|[,])[2-9]\d{2}(\s|-|[.])[2-9]\d{2}(\s|-|[.])(\d{4}[^0-9]+|\d{4}$)/,
-			/[(][2-9]\d{2}[)](\s|-|[.])[2-9]\d{2}(\s|-|[.])(\d{4}[^0-2]+|\d{4}$)/,
-			/([^0-9]+[2-9]\d{2}|^[2-9]\d{2})(\s|-|[.])[2-9]\d{2}(\s|-|[.])(\d{4}[^0-9]+|\d{4}$)/
-		]
-
-
-		patterns.each() {
-			if (text.find(it)) { return true }
-		}
-		return false	
+		
+		if (object.toString().find(pattern)) { return true }
+		else { return false }
 	}
 
 	def serviceMethod(params, request) {
