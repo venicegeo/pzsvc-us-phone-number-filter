@@ -20,3 +20,7 @@ This service accepts `GET` and `POST` requests taking an array and returning a J
 2. `vagrant ssh`.
 3. `cd sync/us-geospatial-filter`.
 4. `grails run-app`.
+
+## Notes
+This service uses a comprehensive listing of US areas codes to disciminate non-US phone numbers from others that may conform to the North American Numbering Plan (NANP)
+
