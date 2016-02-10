@@ -8,7 +8,7 @@ class PhoneNumberFilterService {
 
 
 	def checkForPhoneNumbers(object) {
-		def pattern = /([^0-9]+[(]?[2-9]\d{2}[)]?|^[(]?[2-9]\d{2}[)]?)(\s|-|[.])[2-9]\d{2}(\s|-|[.])(\d{4}[^0-9]+|\d{4}$)/
+		def pattern = /([^0-9]+[(]?[2-9]\d{2}[)]?|^[(]?[2-9]\d{2}[)]?)[^a-zA-Z0-9][2-9]\d{2}(\s|-|[.])(\d{4}[^0-9]+|\d{4}$)/
 
 		def phoneNumber = object.toString().find(pattern)
 		if (phoneNumber) { 
