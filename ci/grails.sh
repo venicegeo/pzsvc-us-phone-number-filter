@@ -7,6 +7,7 @@ popd > /dev/null
 
 if ! test -d "$SDKMAN_DIR"; then
   curl -s get.sdkman.io | bash
+  export SDKMAN_DIR=$HOME/.sdkman
 fi
 
 if ! type sdk; then 
